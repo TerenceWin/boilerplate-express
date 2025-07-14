@@ -4,6 +4,11 @@ require('dotenv').config();
 
 let app = express();
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path} - ${req.ip}`); 
+    next();
+});
+
 app.use('/public', express.static(path.join(__dirname, '/public'))); 
 
 app.get('/', (req, res) => {
@@ -15,11 +20,8 @@ app.get('/json', (req, res) => {
     const message = (messageStyle === 'uppercase')
     ? "HELLO JSON"
     : "Hello json";
-    console.log(message); 
     res.json({message});
-});
-
-
+}); 
 
 
 
