@@ -15,6 +15,7 @@ app.get('/json', (req, res) => {
     const message = (messageStyle === 'uppercase')
     ? "HELLO JSON"
     : "Hello json";
+    console.log(message); 
     res.json({message});
 });
 
