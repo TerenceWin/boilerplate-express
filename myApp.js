@@ -3,12 +3,10 @@ let path = require('path');
 
 let app = express();
 
-console.log("Hello World");
-app.use(express.static(path.join(__dirname, '/public'))); 
+app.use('/public', express.static(path.join(__dirname, '/public'))); 
 
 app.get('/', (req, res) => {
-    const absolutePath = path.join(__dirname, 'views', 'index.html');
-    res.sendFile(absolutePath); 
+    res.sendFile(path.join(__dirname, 'views', 'index.html')); 
 });
 
 
